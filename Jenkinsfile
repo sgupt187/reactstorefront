@@ -1,20 +1,12 @@
-pipeline {
-    agent {
-        docker {
-            image 'node:alpine'
-            args '-p 3000:3000'
-        }
+node{
+    stage("SCM checkout"){
+        git branch: 'main', url: 'https://github.com/sgupt187/reactstorefront'
     }
-    stages {
-        stage('Build') {
-            steps {
-                sh 'npm install'
-            }
-        }
-        stage('Test') { 
-            steps {
-                sh './jenkins/scripts/test.sh' 
-            }
-        }
+    stage("Build image"){
+        sh 'docker build -t reactstorefront-image .'
     }
+    stage("run the image"){
+        sh 'docker run -p 3000:3000 reactstorefront-image'
+    }
+    
 }
