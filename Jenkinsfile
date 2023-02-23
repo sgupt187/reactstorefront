@@ -6,7 +6,7 @@ node{
         sh 'docker build -t reactstorefront-image .'
     }
     stage("run the image"){
-        sh 'docker run -p 3000:3000 reactstorefront-image'
+        sh 'docker run -p 3000:3000 --name react-app reactstorefront-image'
     }
     
 }
