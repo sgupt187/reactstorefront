@@ -5,12 +5,10 @@ node{
     stage('build the image'){
         sh 'docker build -t reactstorefront .'
     }
-    
     stage('stop and remove already running container'){
         sh 'docker stop app'
         sh 'docker rm app'
     }
-    
     stage('run the image'){
         sh 'docker run -dp 3000:3000 --name app reactstorefront'
     }
