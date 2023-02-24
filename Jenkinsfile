@@ -6,6 +6,7 @@ node{
     stage('build the image'){
         sh 'docker build -t reactstorefront .'
     }
+    
     stage('stop and remove already running container'){
         sh 'docker stop react-app'
         sh 'docker rm react-app'
