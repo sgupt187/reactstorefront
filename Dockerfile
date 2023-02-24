@@ -1,7 +1,11 @@
 FROM node:16-alpine
-ADD . /app 
+
+ADD . /app
+
 WORKDIR /app
+
 COPY package.json ./
+
 COPY package-lock.json ./
 COPY ./ ./
 RUN npm install
