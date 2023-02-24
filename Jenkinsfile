@@ -12,5 +12,4 @@ node{
     stage('run the image'){
         sh 'docker run -dp 3000:3000 --name app reactstorefront'
     }
-    
 }
